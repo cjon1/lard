@@ -56,8 +56,126 @@ Branch master set up to track remote branch master from origin.
 1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ 
 
 
-6) Creating a branch on local repository
+6) Creating a branch on local repository (and making a change)
 
-7) Merging (saving) the branch changes back to master
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ git checkout -b test-branch
+Switched to a new branch 'test-branch'
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ git branch
+  master
+* test-branch
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ vim lard.txt
+
+
+7) Merging (saving) the branch changes back to master (nb there are some unnecessary steps here as I test the process)
+
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git merge test-branch
+Already up-to-date. 
+
+<< I think I'm getting that message above because I haven't yet commited the changes I've made on test-branch 
+(i.e. when comparing the last 'committed' states - there is no diff between master & testbranch)>>
+
+<<also note 'git checkout _branch_' e.g. git checkout master = a way of 'cd'ing between different branches>>
+
+
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	That noddy git guide.txt
+	lard.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git branch
+* master
+  test-branch
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git checkout test-branch
+Switched to branch 'test-branch'
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ git status
+On branch test-branch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	That noddy git guide.txt
+	lard.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ git add .
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ git commit -m "test-branch commit for lard.txt"
+[test-branch 1c59e41] test-branch commit for lard.txt
+ 2 files changed, 68 insertions(+)
+ create mode 100644 That noddy git guide.txt
+ create mode 100644 lard.txt
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard test-branch $ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git statusOn branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git merge test-branch
+Updating 76556b5..1c59e41
+Fast-forward
+ That noddy git guide.txt | 63 ++++++++++++++++++++++++++++++++++++++++++++++++
+ lard.txt                 |  5 ++++
+ 2 files changed, 68 insertions(+)
+ create mode 100644 That noddy git guide.txt
+ create mode 100644 lard.txt
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git statusOn branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git commit -m "think this step is unnecessary but just checking"
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ echo "see I told you so"
+see I told you so
+
+
 
 8) Pushing these changes back to github
+
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git push
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1.19 KiB | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+To https://github.com/cjon1/lard.git
+   76556b5..1c59e41  master -> master
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ 
+
+<see how straight forward it is when you create a clean repository without using any ssh keys (ggrr)>
+
+
+9) A last word on branches
+
+- The test-branch (any off shoot of master = local only, it doesn't get saved to github (I don't think))
+
+You can delete your branch, if you want to:
+
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git branch -d test-branch
+
+Deleted branch test-branch (was 1c59e41).
+
+[NB - there is a difference between git branch -d & -D, where -D is more brutal (look it up before you use it)]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
