@@ -167,6 +167,61 @@ Deleted branch test-branch (was 1c59e41).
 
 
 
+World of interesting examples......
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The example below shows that I tried to do:
+
+$ git remote add origin https://github.com/cjon1/demo_app.git
+
+$ git push -u origin master
+remote: Repository not found.
+
+--> this is bcos I hadn't created the repository at the github.com end [duh!]
+= the solution was to a)create the github repository b) run the 'git remote add' with a name other than 'origin'
+So: the lesson is 'add origin' can be 'add anythingWHATevs' and then make sure that anythingWHATevs matches in
+
+git push -u anythingWHATevs master
+
+other lesson is that for:
+
+$ git remote add origin https://github.com/cjon1/REPOSITORY_name.git
+
+you must have a repository on github with the same name e.g. repos = REPOSITORY_name on list in github
+
+
+
+
+Full audit of my cockups & solution =
+
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git remote add origin https://github.com/cjon1/demo_app.git
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git push -u origin master
+remote: Repository not found.
+fatal: repository 'https://github.com/cjon1/demo_app.git/' not found
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git push -u origin master
+remote: Repository not found.
+fatal: repository 'https://github.com/cjon1/demo_app.git/' not found
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git remote add origin https://github.com/cjon1/demo.git
+fatal: remote origin already exists.
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git push -u origin master
+remote: Repository not found.
+fatal: repository 'https://github.com/cjon1/demo_app.git/' not found
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git remote add origin https://github.com/cjon1/demo_app2.git
+fatal: remote origin already exists.
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git remote add first https://github.com/cjon1/demo_app2.git
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $ git push -u first master
+Counting objects: 60, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (47/47), done.
+Writing objects: 100% (60/60), 25.56 KiB | 0 bytes/s, done.
+Total 60 (delta 2), reused 0 (delta 0)
+To https://github.com/cjon1/demo_app2.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from first.
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/demo_app master $
+
+
+
 
 
 
