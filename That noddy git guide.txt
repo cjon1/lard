@@ -1,0 +1,63 @@
+That noddy git guide in full:
+
+[Obviously, substitute 'lard' with the name of your new project in future. Obviously.]
+
+1) create a new project
+
+rails new lard
+
+2) initialise the lard project with git 
+
+cd lard
+git init
+
+<make any necessary changes to .gitignore (if necessary)>
+
+
+3) add to the new git repository
+
+git add .
+
+git status
+
+git commit -m "Initial commit"
+
+4) Off to github....
+
+https://github.com/cjon1
+
+Hit the '+' symbol on the grey line at the top
+
+Choose 'New repository'
+
+Fill in name (i.e. here = lard)
+
+Copy the 2 commands (back to the command prompt on your Mac) from the middle box entitled:
+
+...or push an existing repository from the command line
+
+git remote add origin https://github.com/cjon1/lard.git
+git push -u origin master
+
+
+5) Pushing your new repository up to github...
+
+<Input/Output back on the Mac = > 
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git remote add origin https://github.com/cjon1/lard.git
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ git push -u origin master
+Counting objects: 63, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (49/49), done.
+Writing objects: 100% (63/63), 25.98 KiB | 0 bytes/s, done.
+Total 63 (delta 2), reused 0 (delta 0)
+To https://github.com/cjon1/lard.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+1.9.3-p194 colinjones@cjon1 ~/book/book2/rails_projects/lard master $ 
+
+
+6) Creating a branch on local repository
+
+7) Merging (saving) the branch changes back to master
+
+8) Pushing these changes back to github
